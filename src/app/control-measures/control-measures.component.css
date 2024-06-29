@@ -1,0 +1,189 @@
+.table-header {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.table-header-txt {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-family: Segoe UI;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.10000000149011612px;
+  text-align: left;
+}
+
+.txt-info {
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20.8px;
+  text-align: left;
+  margin: 0;
+}
+
+.measure-table {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px 30px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actions-left {
+  display: flex;
+  gap: 16px;
+}
+
+.actions-right {
+  display: flex;
+  gap: 16px;
+}
+
+.dichotomy-btn {
+  display: flex;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: white;
+  color: #005baa;
+  border: 1px solid #005baa;
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-view {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #CED4DA;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-view:first-child {
+  border-radius: 4px 0px 0px 4px;
+  border-right: none;
+}
+
+.btn-view:last-child {
+  border-radius: 0px 4px 4px 0px;
+}
+
+.btn-expand {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #CED4DA;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: white;
+  color: #005baa;
+  border: none;
+  padding: 8.5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.btn-text {
+  display: flex;
+  align-items: center;
+  font-family: Segoe UI;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  margin: 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left; /* Выравнивание контента по левому краю */
+  white-space: nowrap; /* Предотвращение переноса текста */
+}
+
+.table th {
+  background-color: #f2f2f2;
+  border: 1px solid #e0e0e0;
+}
+
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table td.checkbox-column {
+  width: 100px;
+  height: 36px; /* Уменьшение ширины столбца с чекбоксами */
+  text-align: center; /* Центрирование чекбокса */
+}
+
+.sort-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 4px;
+}

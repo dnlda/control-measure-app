@@ -1,0 +1,61 @@
+<div class="measure-table">
+  <div class="table-header"><img src="assets/design-equipment.svg"/><h1 class="table-header-txt">РТСН\НН-2</h1></div>
+  <div class="actions">
+    <div class="actions-left">
+      <button class="btn btn-primary" > <img src="assets/certificate.svg"/><p class="btn-text">Проверить</p></button>
+      <button class="btn btn-primary" > <img src="assets/block.svg"/><p class="btn-text">Отменить проверку</p></button>
+      <button class="btn btn-primary" (click)="editSelectedMeasurement()"><img src="assets/edit.svg"/> <p class="btn-text">Редактировать</p></button>
+      <button class="btn btn-primary" (click)="confirmDeleteSelectedMeasurement()"> <img src="assets/delete.svg"/><p class="btn-text">Удалить</p></button>
+    </div>
+    <div class="actions-right">
+       <div class="dichotomy-btn">
+        <button class="btn btn-view" ><img src="assets/vertical.svg"/></button> <!--(click)="setHorizontalView()" -->
+        <button class="btn btn-view" ><img src="assets/horizontal.svg"/></button> <!--(click)="setVerticalView()" -->
+       </div>
+       <button class="btn btn-expand" ><img src="assets/expand.svg"/></button> <!--(click)="setVerticalView()" -->
+    </div>
+  </div>
+ <p class="txt-info">Нет провереных элементов</p>
+ <div class="sort-switch">
+  <label>Сортировка по дате:</label>
+  <label class="switch">
+    <input type="checkbox" [(ngModel)]="sortByDateDescending" (change)="sortMeasurements()">
+    <span class="slider round"></span>
+  </label>
+</div>
+  <table class="table">
+    
+    <thead>
+      <tr>
+        <th class="checkbox-column"></th>
+        <th>Дата</th>
+        <th>Время</th>
+        <th>Источник</th>
+        <th>Фаза</th>
+        <th>U, kB</th>
+        <th>I, A</th>
+        <th>P, MBt</th>
+        <th>Q, Mвар</th>
+        <th>cos φ</th>
+      </tr>
+    </thead>
+    <button class="btn btn-secondary" (click)="addMeasurement()"> <img src="assets/add.svg"/><span class="btn-text">Добавить измерение</span></button>
+    <tbody>
+      <tr *ngFor="let measurement of measurements">
+      
+        <td  class="checkbox-column">
+          <input type="checkbox" name="selectedMeasurement" (change)="selectMeasurement(measurement)" [checked]="selectedMeasurement === measurement">
+        </td>
+        <td>{{ getDate(measurement.date) }}</td>
+        <td>{{ getTime(measurement.date) }}</td>
+        <td>{{ measurement.source }}</td>
+        <td>{{ measurement.faze }}</td>
+        <td>{{ measurement.voltage }}</td>
+        <td>{{ measurement.amperage }}</td>
+        <td>{{ measurement.power }}</td>
+        <td>{{ measurement. rPower }}</td>
+        <td>{{ measurement.powerFactor }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

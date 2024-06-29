@@ -1,0 +1,46 @@
+<form [formGroup]="measurementForm" (ngSubmit)="onSubmit()">
+  <div class="modal-header">
+    <h4 class="modal-title">Редактировать измерение</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="date">Дата и время</label>
+      <input id="date" type="datetime-local" formControlName="date" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="source">Источник</label>
+      <input id="source" type="text" formControlName="source" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="faze">Фаза</label>
+      <input id="faze" type="text" formControlName="faze" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="voltage">U, kB</label>
+      <input id="voltage" type="number" formControlName="voltage" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="amperage">I, A</label>
+      <input id="amperage" type="number" formControlName="amperage" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="power">P, MBt</label>
+      <input id="power" type="number" formControlName="power" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="rPower">Q, Mвар</label>
+      <input id="rPower" type="number" formControlName="rPower" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="powerFactor">cos φ</label>
+      <input id="powerFactor" type="number" formControlName="powerFactor" class="form-control">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel')">Отмена</button>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+  </div>
+</form>

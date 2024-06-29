@@ -1,0 +1,38 @@
+.substation {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  margin: 16px 30px;
+}
+
+.actions {
+    display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.actions-left {
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px
+}
+
+.breadcrumbs-btn {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 8px;
+
+}
+
+.breadcrumbs-txt {
+    display: flex;
+
+    margin: 0;
+}
+
+.filter-area {
+    display: flex;
+  flex-direction: row;
+}

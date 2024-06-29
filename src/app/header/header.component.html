@@ -1,0 +1,47 @@
+<mat-toolbar color="primary">
+  <div class="right-section-header">
+    <div class="logo-section">
+      <img class="logo-img" src="assets/logo.svg" />
+      <span class="typography-header">Контрольные замеры</span>
+    </div>
+    <div class="navigation">
+      <button class="btn-header" [style.background-color]="activeSection === 'measurements' ? '#ffffff' : 'transparent'"
+        [style.color]="activeSection === 'measurements' ? '#000' : '#fff'" (click)="setActiveSection('measurements')">
+        <img src="assets/scale.svg" [style.filter]="activeSection === 'measurements' ? 'invert(20%)' : 'invert(0%)'" />
+        Замеры
+      </button>
+      <button class="btn-header" [style.background-color]="activeSection === 'reports' ? '#ffffff' : 'transparent'"
+        [style.color]="activeSection === 'reports' ? '#000' : '#fff'" (click)="setActiveSection('reports')">
+        <img src="assets/document.svg" [style.filter]="activeSection === 'reports' ? 'invert(20%)' : 'invert(0%)'" />
+        Отчеты
+      </button>
+      <button class="btn-header" [style.background-color]="activeSection === 'service' ? '#ffffff' : 'transparent'"
+        [style.color]="activeSection === 'service' ? '#000' : '#fff'" (click)="setActiveSection('service')">
+        <img src="assets/case.svg" [style.filter]="activeSection === 'service' ? 'invert(20%)' : 'invert(0%)'" />
+        Сервис
+      </button>
+    </div>
+  </div>
+  <div class="left-section-header">
+    <button 
+       class="btn-group" 
+       [style.background-color]="activeBtnGroup === 'compact' ? '#fff' : '#005baa'"
+       (click)="setActiveBtnGroup('compact')"
+    > 
+       <img 
+          src="assets/compact.svg"
+          [style.filter]="activeBtnGroup === 'compact' ? 'invert(80%)' : 'invert(0%)'" 
+       />
+    </button>
+    <button 
+       class="btn-group"
+       [style.background-color]="activeBtnGroup === 'week' ? '#fff' : '#005baa'"
+       (click)="setActiveBtnGroup('week')"
+    > 
+       <img 
+          src="assets/week.svg" 
+          [style.filter]="activeBtnGroup === 'week' ? 'invert(80%)' : 'invert(0%)'" 
+        />
+    </button>
+  </div>
+</mat-toolbar>

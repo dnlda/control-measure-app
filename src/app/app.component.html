@@ -1,0 +1,21 @@
+<app-header (sectionSelected)="onSectionSelected($event)" (btnGroupSelected)="onBtnGroupSelected($event)"></app-header>
+
+<as-split [direction]="splitDirection">
+  <as-split-area>
+    <div>
+      <app-substation-list></app-substation-list>
+    </div>
+  </as-split-area>
+  <as-split-area>
+    <div *ngIf="selectedSection === 'measurements'">
+      <app-control-measures></app-control-measures>
+    </div>
+    <div *ngIf="selectedSection === 'reports'">
+      Отчеты
+    </div>
+    <div *ngIf="selectedSection === 'service'">
+      Сервис
+    </div>
+  </as-split-area>
+</as-split>
+<div class="content">

@@ -1,0 +1,59 @@
+<div class="substation">
+    <div class="actions">
+        <div class="actions-left">
+            <button class="breadcrumbs-btn" >
+               <img 
+                  src="assets/menu.svg" 
+                  class="burger-img"
+                />
+                <p class="breadcrumbs-txt">Подстанции</p>
+            </button>
+            <span>></span>
+            <h1> ТЭЦ ПГУ ГСР Энерго</h1>
+        </div>
+        <button>Сохранить</button>
+    </div>
+    <div>
+        <mat-button-toggle>Toggle Button</mat-button-toggle>
+        <mat-button-toggle>Toggle Button</mat-button-toggle>
+    </div>
+    <div>
+        <mat-button-toggle>Toggle Button</mat-button-toggle>
+        <mat-button-toggle>Toggle Button</mat-button-toggle>
+    </div>
+    <div class="filter-area">
+        <p>Тип</p>
+        <mat-select class="select" placeholder="Выберите...">
+            <mat-option value="option1">Опция 1</mat-option>
+            <mat-option value="option2">Опция 2</mat-option>
+            <mat-option value="option3">Опция 3</mat-option>
+        </mat-select>
+        <p>Тип</p>
+        <mat-select  class="select" placeholder="Выберите...">
+            <mat-option value="option1">Опция 1</mat-option>
+            <mat-option value="option2">Опция 2</mat-option>
+            <mat-option value="option3">Опция 3</mat-option>
+        </mat-select>
+        <div class="sort-switch">
+            <label>Сортировка</label>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Наименование</th>
+                <th>U ном.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr> <!--*ngFor="let measurement of measurements"-->
+                <td>РТСН\НН-1</td>
+                <td>2342</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
