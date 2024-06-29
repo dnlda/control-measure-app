@@ -8,39 +8,48 @@
                 />
                 <p class="breadcrumbs-txt">Подстанции</p>
             </button>
-            <span>></span>
-            <h1> ТЭЦ ПГУ ГСР Энерго</h1>
+            <span class="crumbs">></span>
+            <h1 class="substation-name"> ТЭЦ ПГУ ГСР Энерго</h1>
         </div>
-        <button>Сохранить</button>
+        <button class="save-btn">
+         <img 
+            src="assets/save.svg" 
+            class="save-img"
+          />
+          <p class="save-btn-text">Сохранить</p>
+        </button>
     </div>
-    <div>
-        <mat-button-toggle>Toggle Button</mat-button-toggle>
-        <mat-button-toggle>Toggle Button</mat-button-toggle>
+    <div class="measure-type">
+        <button class="substation-type"><p class="substation-type-text">Подстанция</p></button>
+        <button class="equipment-type"><p class="equipment-type-text">Оборудование</p></button>
     </div>
-    <div>
-        <mat-button-toggle>Toggle Button</mat-button-toggle>
-        <mat-button-toggle>Toggle Button</mat-button-toggle>
+   <div class="edit-type">
+        <button class="list-type"><p class="edit-text">Список</p></button>
+        <button class="statesment-type"><p class="edit-text">Ведомость</p></button>
     </div>
     <div class="filter-area">
-        <p>Тип</p>
-        <mat-select class="select" placeholder="Выберите...">
-            <mat-option value="option1">Опция 1</mat-option>
-            <mat-option value="option2">Опция 2</mat-option>
-            <mat-option value="option3">Опция 3</mat-option>
-        </mat-select>
-        <p>Тип</p>
-        <mat-select  class="select" placeholder="Выберите...">
-            <mat-option value="option1">Опция 1</mat-option>
-            <mat-option value="option2">Опция 2</mat-option>
-            <mat-option value="option3">Опция 3</mat-option>
-        </mat-select>
-        <div class="sort-switch">
-            <label>Сортировка</label>
-            <label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
-          </div>
+        <div class="select-area">
+            <div class="type">
+                <p class="type-txt">Тип</p>
+                <mat-form-field  class="select" color="primary" appearance="outline" >
+                    <mat-select class="select-test" [(ngModel)]="defaultOptionType" >
+                        <mat-option value="option1">Трансформаторы</mat-option>
+                        <mat-option value="option2">Транзисторы</mat-option>
+                     </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="type">
+                <p class="type-txt">РУ</p>
+                <mat-form-field  class="select" color="primary" appearance="outline" >
+                    <mat-select class="select-test" [(ngModel)]="defaultOptionPy" >
+                        <mat-option value="option1">110</mat-option>
+                   <mat-option value="option2">100</mat-option>
+                   <mat-option value="option3">220</mat-option>
+                     </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <p><mat-slide-toggle color="primary" hideIcon="true">Сортировка</mat-slide-toggle></p>
     </div>
     <table class="table">
         <thead>

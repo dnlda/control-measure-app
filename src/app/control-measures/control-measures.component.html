@@ -15,14 +15,10 @@
        <button class="btn btn-expand" ><img src="assets/expand.svg"/></button> <!--(click)="setVerticalView()" -->
     </div>
   </div>
- <p class="txt-info">Нет провереных элементов</p>
- <div class="sort-switch">
-  <label>Сортировка по дате:</label>
-  <label class="switch">
-    <input type="checkbox" [(ngModel)]="sortByDateDescending" (change)="sortMeasurements()">
-    <span class="slider round"></span>
-  </label>
-</div>
+ <div class="sort-info">
+  <p class="txt-info">Нет провереных элементов</p>
+  <p><mat-slide-toggle color="primary" hideIcon="true">Группировать по дате</mat-slide-toggle></p>
+ </div>
   <table class="table">
     
     <thead>

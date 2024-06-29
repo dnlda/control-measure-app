@@ -2,6 +2,7 @@ import { NgModule, Component, } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
@@ -40,6 +41,7 @@ import { AngularSplitModule } from 'angular-split';
     ReactiveFormsModule,
     AngularSplitModule,
     MatButtonToggleModule,
+    MatSlideToggleModule,
     MatSelectModule
   ],
   providers: [DataService],

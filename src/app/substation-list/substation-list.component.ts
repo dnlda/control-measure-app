@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './substation-list.component.css'
 })
 export class SubstationListComponent {
-
+  defaultOptionType = 'option1';
+  defaultOptionPy = 'option1';
+  maxHeight = `32px`;
 }

@@ -6,33 +6,240 @@
 }
 
 .actions {
-    display: flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
 .actions-left {
-    display: flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px
+  gap: 10px;
 }
 
 .breadcrumbs-btn {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 8px;
-
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 5px 12px;
 }
 
 .breadcrumbs-txt {
-    display: flex;
-
-    margin: 0;
+  display: flex;
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: left;
+  white-space: nowrap;
+  margin: 0;
 }
+
+.crumbs {
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28.13px;
+  text-align: left;
+}
+
+.substation-name {
+  font-family: Segoe UI;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 29.26px;
+  text-align: left;
+  margin: 0;
+}
+
+.save-btn {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+  background-color: #005baa;
+  border-radius: 4px;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+}
+
+.save-btn-text {
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.10000000149011612px;
+  text-align: center;
+  margin: 0;
+}
+
+.measure-type {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #DEE2E6;
+}
+
+.substation-type {
+color: #005baa;
+background-color: white;
+display: flex;
+align-items: center;
+border: none;
+cursor: pointer;
+padding: 9px 12px;
+}
+
+.substation-type-text {
+  font-family: Segoe UI;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+margin: 0;
+}
+
+.equipment-type {
+  color: #495057;
+  background-color: #F2F2F2;
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  padding: 9px 12px;
+  }
+
+.equipment-type-text {
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  margin: 0;
+  }
+
+.edit-type {
+  display: flex;
+  flex-direction: row;
+}  
+
+.edit-text {
+  font-family: Segoe UI;
+font-size: 14px;
+font-weight: 400;
+line-height: 21px;
+text-align: left;
+margin: 0;
+
+}  
+
+.list-type {
+  display: flex;
+  flex-direction: row;
+  color: #333333;
+  padding: 4.5px 12px;
+  border-radius: 4px 0px 0px 4px;
+  border: 1px solid #CED4DA;
+  border-right: none;
+  background-color: #F2F2F2;
+}  
+
+.statesment-type {
+  display: flex;
+  flex-direction: row;
+  color: #4F4F4F;
+  padding: 4.5px 12px;
+  border-radius: 0px 4px 4px 0px;
+  border: 1px solid #CED4DA;
+  background-color: white;
+}  
 
 .filter-area {
-    display: flex;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: red; */
+}
+
+.select-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  /* background-color: green; */
+}
+
+.type {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  max-height: 32px;
+ 
+  color: #333333;
+}
+
+.type-txt {
+  font-family: Segoe UI;
+font-size: 16px;
+font-weight: 400;
+line-height: 21.28px;
+text-align: left;
+margin: 0;
+}
+
+.select {
+  height: 32px;
   flex-direction: row;
 }
+
+.select ::ng-deep .mdc-text-field--outlined .mat-mdc-form-field-infix, .mdc-text-field--no-label .mat-mdc-form-field-infix {
+padding-top: 4px;
+}
+
+.select ::ng-deep .mat-mdc-select-value-text {
+  color: rgb(0, 0, 0);
+  font-family: Segoe UI;
+font-size: 14px;
+font-weight: 400;
+line-height: 21px;
+text-align: left;
+
+}
+
+
+
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left; /* Выравнивание контента по левому краю */
+  white-space: nowrap; /* Предотвращение переноса текста */
+}
+
+.table th {
+  background-color: #f2f2f2;
+  border: 1px solid #e0e0e0;
+}
+
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+
+
+
+
