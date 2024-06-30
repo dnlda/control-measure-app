@@ -1,15 +1,16 @@
-<h2 mat-dialog-title>Edit Measurement</h2>
-<div mat-dialog-content>
+<h2   mat-dialog-title>Edit Measurement</h2>
+<div mat-dialog-content >
   <form>
     <mat-form-field>
-      <mat-label>Source</mat-label>
+      <mat-label >Source</mat-label>
       <input matInput [(ngModel)]="data.source" name="source"/>
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Date</mat-label>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="data.date" name="date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+    <mat-form-field  >
+      <input class="picker" matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [(ngModel)]="data.date" name="date" required>
+      <mat-datepicker-toggle  matSuffix [for]="$any(picker)">
+      </mat-datepicker-toggle>
+      <ngx-mat-datetime-picker  #picker [showSpinners]="true">
+      </ngx-mat-datetime-picker>
     </mat-form-field>
   </form>
 </div>

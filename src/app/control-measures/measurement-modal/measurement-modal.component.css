@@ -1,0 +1,37 @@
+::ng-deep .mat-calendar-period-button .mdc-button__label   {
+    color:white !important;
+ 
+ }
+ 
+  ::ng-deep .mat-calendar {     
+    color:white !important;
+    background-color: rgb(23, 9, 68) !important;
+  }
+ 
+   ::ng-deep  .mat-calendar-body-cell-content {
+    color:rgb(99, 209, 211) !important;
+  }
+ 
+ 
+   ::ng-deep  .time-container-clock {
+    color:white !important;
+    background-color: rgb(23, 9, 68) !important;
+ }
+ 
+  ::ng-deep .time-container  {
+    color:white !important;
+    background-color: rgb(23, 9, 68) !important;
+ }
+ 
+  ::ng-deep .time-container-body-cell-content {
+    color:white !important;
+ }
+ ::ng-deep .time-container .mat-mdc-input-element {
+    color:white !important;
+    background-color: rgb(23, 9, 68) !important;
+ }
+
+ .picker {
+    background-color: green !important;
+    color: orange !important;
+ }

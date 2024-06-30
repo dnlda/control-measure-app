@@ -23,7 +23,9 @@ import { AngularSplitModule } from 'angular-split';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMatDatetimePickerModule } from '@angular-material-components/datetime-picker';
 import { SimpleMessageModalComponent } from './control-measures/simple-message-modal/simple-message-modal.component';
+
 
 @NgModule({
   declarations: [
@@ -53,6 +55,11 @@ import { SimpleMessageModalComponent } from './control-measures/simple-message-m
     MatSelectModule,
     MatCheckboxModule,
     MatNativeDateModule,
+    NgxMatDatetimePickerModule, 
+    
+    
+ 
+    
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
