@@ -163,7 +163,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  /* background-color: red; */
 }
 
 .select-area {
@@ -171,7 +170,6 @@
   flex-direction: row;
   align-items: center;
   gap: 20px;
-  /* background-color: green; */
 }
 
 .type {
@@ -216,15 +214,13 @@
   width: 17px !important;
 }
 
-
 .mat-slide-toggle ::ng-deep .mdc-switch {
   width: 32px !important;
-  border: 1px solid #DEE2E6;
+  border: 1px solid #dee2e6;
   border-radius: 32px;
-  
 }
 
-.mat-slide-toggle ::ng-deep .mdc-form-field>label  {
+.mat-slide-toggle ::ng-deep .mdc-form-field > label {
   font-family: Segoe UI;
   font-size: 16px;
   font-weight: 400;
@@ -237,19 +233,18 @@
 }
 
 .mat-slide-toggle ::ng-deep .mdc-switch:enabled .mdc-switch__track::after {
-  background-color:  #005baa !important;
+  background-color: #005baa !important;
 }
 
-.mat-slide-toggle ::ng-deep .mdc-switch .mdc-switch__handle{
-   width: 14px !important;
-   height: 14px !important;
+.mat-slide-toggle ::ng-deep .mdc-switch .mdc-switch__handle {
+  width: 14px !important;
+  height: 14px !important;
 }
 
-.mat-slide-toggle ::ng-deep .mdc-elevation-overlay{
-  background-color: #DEE2E6 !important;
-  border: 1px solid #DEE2E6;
+.mat-slide-toggle ::ng-deep .mdc-elevation-overlay {
+  background-color: #dee2e6 !important;
+  border: 1px solid #dee2e6;
 }
-
 
 .table {
   width: 100%;
@@ -261,19 +256,18 @@
   border: 1px solid #ddd;
   cursor: pointer;
   padding: 8px;
-  text-align: left; /* Выравнивание контента по левому краю */
-  white-space: nowrap; /* Предотвращение переноса текста */
+  text-align: left;
+  white-space: nowrap;
 }
 
 .table th {
   background-color: #f2f2f2;
   border: 1px solid #e0e0e0;
   font-family: Segoe UI;
-font-size: 17px;
-font-weight: 500;
-line-height: 22px;
-text-align: left;
-
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 22px;
+  text-align: left;
 }
 
 .table td {

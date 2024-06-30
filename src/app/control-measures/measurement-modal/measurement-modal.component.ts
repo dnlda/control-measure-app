@@ -24,9 +24,9 @@ export const MY_NGX_DATE_FORMATS: NgxMatDateFormats = {
   styleUrls: ['./measurement-modal.component.css'],
   providers: [
     { provide: NgxMatDateAdapter,
-      useClass: NgxMatMomentAdapter, //Moment adapter
+      useClass: NgxMatMomentAdapter,
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS] },
-      { provide: NGX_MAT_DATE_FORMATS, useValue: MY_NGX_DATE_FORMATS } // Установите нужную локаль
+      { provide: NGX_MAT_DATE_FORMATS, useValue: MY_NGX_DATE_FORMATS } 
   ]
 })
 export class MeasurementModalComponent {

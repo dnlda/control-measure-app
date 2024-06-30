@@ -1,67 +1,80 @@
 <div class="measure-table" [class.fullscreen]="isFullscreen">
-  <div class="table-header"><img src="assets/design-equipment.svg"/><h1 class="table-header-txt">РТСН\НН-2</h1></div>
+  <div class="table-header"><img src="assets/design-equipment.svg" />
+    <h1 class="table-header-txt">РТСН\НН-2</h1>
+  </div>
   <div class="actions">
     <div class="actions-left">
-      <button class="btn btn-primary" > <img src="assets/certificate.svg"/><p class="btn-text">Проверить</p></button>
-      <button class="btn btn-primary" > <img src="assets/block.svg"/><p class="btn-text">Отменить проверку</p></button>
-      <button class="btn btn-primary" (click)="editSelectedMeasurement()"><img src="assets/edit.svg"/> <p class="btn-text">Редактировать</p></button>
-      <button class="btn btn-primary" (click)="confirmDeleteSelectedMeasurement()"> <img src="assets/delete.svg"/><p class="btn-text">Удалить</p></button>
+      <button class="btn btn-primary"> <img src="assets/certificate.svg" />
+        <p class="btn-text">Проверить</p>
+      </button>
+      <button class="btn btn-primary"> <img src="assets/block.svg" />
+        <p class="btn-text">Отменить проверку</p>
+      </button>
+      <button class="btn btn-primary" (click)="editSelectedMeasurement()"><img src="assets/edit.svg" />
+        <p class="btn-text">Редактировать</p>
+      </button>
+      <button class="btn btn-primary" (click)="confirmDeleteSelectedMeasurement()"> <img src="assets/delete.svg" />
+        <p class="btn-text">Удалить</p>
+      </button>
     </div>
     <div class="actions-right">
-       <div class="dichotomy-btn">
-        <button class="btn btn-view" ><img src="assets/vertical.svg"/></button> <!--(click)="setHorizontalView()" -->
-        <button class="btn btn-view" ><img src="assets/horizontal.svg"/></button> <!--(click)="setVerticalView()" -->
-       </div>
-       <button class="btn btn-expand" (click)="toggleFullscreen()" ><img src="assets/expand.svg"/></button> <!--(click)="setVerticalView()" -->
+      <div class="dichotomy-btn">
+        <button class="btn btn-view"><img src="assets/vertical.svg" /></button>
+        <button class="btn btn-view"><img src="assets/horizontal.svg" /></button>
+      </div>
+      <button class="btn btn-expand" (click)="toggleFullscreen()"><img src="assets/expand.svg" /></button>
     </div>
   </div>
- <div class="sort-info">
-  <span class="txt-info">
-    <p>Нет</p>
-    <p>провереных элементов</p>
-  </span>
-  <mat-slide-toggle class="mat-slide-toggle"  [checked]="sortByDateDescending" (change)="toggleSortOrder()" color="primary" hideIcon="true">Группировать по дате</mat-slide-toggle>
- </div>
- <table class="table">
-  <thead>
-    <tr>
-      <th class="checkbox-column">
-        <mat-checkbox color="primary" (change)="selectAll($event)" [checked]="allSelected" [indeterminate]="indeterminate"></mat-checkbox>
-      </th>
-      <th>Дата</th>
-      <th>Время</th>
-      <th>Источник</th>
-      <th>Фаза</th>
-      <th>U, kB</th>
-      <th>I, A</th>
-      <th>P, MBt</th>
-      <th>Q, Mвар</th>
-      <th>cos φ</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="button-cell" colspan="10">
-        <button class="btn btn-secondary" (click)="addMeasurement()">
-          <img src="assets/add.svg"/>
-          <span class="btn-text">Добавить измерение</span>
-        </button>
-      </td>
-    </tr>
-    <tr *ngFor="let measurement of measurementData">
-      <td class="checkbox-column">
-        <mat-checkbox color="primary" (change)="selectMeasurement($event, measurement)" [checked]="selectedMeasurements.includes(measurement)"></mat-checkbox>
-      </td>
-      <td>{{ getDate(measurement.date) }}</td>
-      <td>{{ getTime(measurement.date) }}</td>
-      <td>{{ measurement.source }}</td>
-      <td>{{ measurement.faze }}</td>
-      <td >{{ measurement.voltage !== 0 ? measurement.voltage : '' }}</td>
-      <td >{{ measurement.amperage !== 0 ? measurement.amperage : '' }}</td>
-      <td >{{ measurement.power !== 0 ?measurement.power : '' }}</td>
-      <td >{{measurement.rPower !== 0 ? measurement.rPower : '' }}</td>
-      <td >{{ measurement.powerFactor !== 0 ? measurement.powerFactor : '' }}</td>
-    </tr>
-  </tbody>
-</table>
+  <div class="sort-info">
+    <span class="txt-info">
+      <p>Нет</p>
+      <p>провереных элементов</p>
+    </span>
+    <mat-slide-toggle class="mat-slide-toggle" [checked]="sortByDateDescending" (change)="toggleSortOrder()"
+      color="primary" hideIcon="true">Группировать по дате</mat-slide-toggle>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="checkbox-column">
+          <mat-checkbox color="primary" (change)="selectAll($event)" [checked]="allSelected"
+            [indeterminate]="indeterminate"></mat-checkbox>
+        </th>
+        <th>Дата</th>
+        <th>Время</th>
+        <th>Источник</th>
+        <th>Фаза</th>
+        <th>U, kB</th>
+        <th>I, A</th>
+        <th>P, MBt</th>
+        <th>Q, Mвар</th>
+        <th>cos φ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="button-cell" colspan="10">
+          <button class="btn btn-secondary" (click)="addMeasurement()">
+            <img src="assets/add.svg" />
+            <span class="btn-text">Добавить измерение</span>
+          </button>
+        </td>
+      </tr>
+      <tr *ngFor="let measurement of measurementData">
+        <td class="checkbox-column">
+          <mat-checkbox color="primary" (change)="selectMeasurement($event, measurement)"
+            [checked]="selectedMeasurements.includes(measurement)"></mat-checkbox>
+        </td>
+        <td>{{ getDate(measurement.date) }}</td>
+        <td>{{ getTime(measurement.date) }}</td>
+        <td>{{ measurement.source }}</td>
+        <td>{{ measurement.faze }}</td>
+        <td>{{ measurement.voltage !== 0 ? measurement.voltage : '' }}</td>
+        <td>{{ measurement.amperage !== 0 ? measurement.amperage : '' }}</td>
+        <td>{{ measurement.power !== 0 ?measurement.power : '' }}</td>
+        <td>{{measurement.rPower !== 0 ? measurement.rPower : '' }}</td>
+        <td>{{ measurement.powerFactor !== 0 ? measurement.powerFactor : '' }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

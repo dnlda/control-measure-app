@@ -9,9 +9,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
       <p>{{ data.message }}</p>
     </div>
     <div mat-dialog-actions>
-      <button mat-button (click)="close()">OK</button>
+      <button mat-button class="btn" (click)="close()">OK</button>
     </div>
-  `
+  `,
 })
 export class SimpleMessageModalComponent {
   constructor(

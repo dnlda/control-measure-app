@@ -33,13 +33,19 @@ export class DataService {
   }
 
   getMeasurementById(id: number): Measurement | undefined {
-    return this.measurements.find(m => m.id === id);
+    return this.measurements.find((m) => m.id === id);
   }
 
-  addMeasurement(measurementId: number, newMeasurement: { date: Date; source: string }) {
+  addMeasurement(
+    measurementId: number,
+    newMeasurement: { date: Date; source: string }
+  ) {
     const measurement = this.getMeasurementById(measurementId);
     if (measurement) {
-      const newId = measurement.data.length > 0 ? Math.max(...measurement.data.map(d => d.id)) + 1 : 1;
+      const newId =
+        measurement.data.length > 0
+          ? Math.max(...measurement.data.map((d) => d.id)) + 1
+          : 1;
       measurement.data.push({
         id: newId,
         date: newMeasurement.date,
@@ -54,10 +60,15 @@ export class DataService {
     }
   }
 
-  editMeasurement(measurementId: number, updatedMeasurement: { id: number; date: Date; source: string }) {
+  editMeasurement(
+    measurementId: number,
+    updatedMeasurement: { id: number; date: Date; source: string }
+  ) {
     const measurement = this.getMeasurementById(measurementId);
     if (measurement) {
-      const index = measurement.data.findIndex(m => m.id === updatedMeasurement.id);
+      const index = measurement.data.findIndex(
+        (m) => m.id === updatedMeasurement.id
+      );
       if (index !== -1) {
         measurement.data[index].date = updatedMeasurement.date;
         measurement.data[index].source = updatedMeasurement.source;
@@ -68,7 +79,9 @@ export class DataService {
   deleteMeasurement(measurementId: number, measurementDataId: number) {
     const measurement = this.getMeasurementById(measurementId);
     if (measurement) {
-      measurement.data = measurement.data.filter(m => m.id !== measurementDataId);
+      measurement.data = measurement.data.filter(
+        (m) => m.id !== measurementDataId
+      );
     }
   }
 

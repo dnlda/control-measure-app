@@ -1,20 +1,22 @@
-<h2   mat-dialog-title>Edit Measurement</h2>
-<div mat-dialog-content >
+<h2 mat-dialog-title>Добавить измерение</h2>
+<div mat-dialog-content>
   <form>
     <mat-form-field>
-      <mat-label >Source</mat-label>
-      <input matInput [(ngModel)]="data.source" name="source"/>
-    </mat-form-field>
-    <mat-form-field  >
-      <input class="picker" matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [(ngModel)]="data.date" name="date" required>
-      <mat-datepicker-toggle  matSuffix [for]="$any(picker)">
+      <mat-label>Дата и время</mat-label>
+      <input class="picker" matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [(ngModel)]="data.date"
+        name="date" required>
+      <mat-datepicker-toggle matSuffix [for]="$any(picker)">
       </mat-datepicker-toggle>
-      <ngx-mat-datetime-picker  #picker [showSpinners]="true">
+      <ngx-mat-datetime-picker #picker [showSpinners]="true">
       </ngx-mat-datetime-picker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Источник</mat-label>
+      <input matInput [(ngModel)]="data.source" name="source" />
     </mat-form-field>
   </form>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="cancel()">Cancel</button>
-  <button mat-button (click)="save()" cdkFocusInitial>Save</button>
+<div mat-dialog-actions class="action-zone">
+  <button mat-button class="btn-save" (click)="save()" cdkFocusInitial>Сохранить</button>
+  <button mat-button class="btn-cancel" (click)="cancel()">Закрыть</button>
 </div>

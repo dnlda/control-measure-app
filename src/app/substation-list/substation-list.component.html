@@ -1,65 +1,68 @@
 <div class="substation">
     <div class="actions">
         <div class="actions-left">
-            <button class="breadcrumbs-btn" >
-               <img 
-                  src="assets/menu.svg" 
-                  class="burger-img"
-                />
+            <button class="breadcrumbs-btn">
+                <img src="assets/menu.svg" class="burger-img" />
                 <p class="breadcrumbs-txt">Подстанции</p>
             </button>
             <span class="crumbs">></span>
             <h1 class="substation-name"> ТЭЦ ПГУ ГСР Энерго</h1>
         </div>
         <button class="save-btn">
-         <img 
-            src="assets/save.svg" 
-            class="save-img"
-          />
-          <p class="save-btn-text">Сохранить</p>
+            <img src="assets/save.svg" class="save-img" />
+            <p class="save-btn-text">Сохранить</p>
         </button>
     </div>
     <div class="measure-type">
-        <button class="substation-type"><p class="substation-type-text">Подстанция</p></button>
-        <button class="equipment-type"><p class="equipment-type-text">Оборудование</p></button>
+        <button class="substation-type">
+            <p class="substation-type-text">Подстанция</p>
+        </button>
+        <button class="equipment-type">
+            <p class="equipment-type-text">Оборудование</p>
+        </button>
     </div>
-   <div class="edit-type">
-        <button class="list-type"><p class="edit-text">Список</p></button>
-        <button class="statesment-type"><p class="edit-text">Ведомость</p></button>
+    <div class="edit-type">
+        <button class="list-type">
+            <p class="edit-text">Список</p>
+        </button>
+        <button class="statesment-type">
+            <p class="edit-text">Ведомость</p>
+        </button>
     </div>
     <div class="filter-area">
         <div class="select-area">
             <div class="type">
                 <p class="type-txt">Тип</p>
-                <mat-form-field  class="select" color="primary" appearance="outline" >
-                    <mat-select class="select-test" [(ngModel)]="defaultOptionType" >
+                <mat-form-field class="select" color="primary" appearance="outline">
+                    <mat-select class="select-test" [(ngModel)]="defaultOptionType">
                         <mat-option value="option1">Трансформаторы</mat-option>
                         <mat-option value="option2">Транзисторы</mat-option>
-                     </mat-select>
+                    </mat-select>
                 </mat-form-field>
             </div>
             <div class="type">
                 <p class="type-txt">РУ</p>
-                <mat-form-field  class="select" color="primary" appearance="outline" >
-                    <mat-select class="select-test" [(ngModel)]="defaultOptionPy" >
+                <mat-form-field class="select" color="primary" appearance="outline">
+                    <mat-select class="select-test" [(ngModel)]="defaultOptionPy">
                         <mat-option value="option1">110</mat-option>
-                   <mat-option value="option2">100</mat-option>
-                   <mat-option value="option3">220</mat-option>
-                     </mat-select>
+                        <mat-option value="option2">100</mat-option>
+                        <mat-option value="option3">220</mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
         </div>
-        <mat-slide-toggle class="mat-slide-toggle" color="primary"  hideIcon="true">Схема</mat-slide-toggle>
+        <mat-slide-toggle class="mat-slide-toggle" color="primary" hideIcon="true">Схема</mat-slide-toggle>
     </div>
     <table class="table">
         <thead>
-            <tr >
+            <tr>
                 <th>Наименование</th>
                 <th>U ном.</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let measurement of measurements" (click)="selectMeasurement(measurement.id)" [style.background-color]="idNumber === measurement.id ? '#E5EFF7': 'white'"> <!--*ngFor="let measurement of measurements"-->
+            <tr *ngFor="let measurement of measurements" (click)="selectMeasurement(measurement.id)"
+                [style.background-color]="idNumber === measurement.id ? '#E5EFF7': 'white'">
                 <td>{{measurement.name}}</td>
                 <td>{{measurement.voltage}}</td>
             </tr>

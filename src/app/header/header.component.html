@@ -23,25 +23,13 @@
     </div>
   </div>
   <div class="left-section-header">
-    <button 
-       class="btn-group" 
-       [style.background-color]="activeBtnGroup === 'compact' ? '#fff' : '#005baa'"
-       (click)="setActiveBtnGroup('compact')"
-    > 
-       <img 
-          src="assets/compact.svg"
-          [style.filter]="activeBtnGroup === 'compact' ? 'invert(80%)' : 'invert(0%)'" 
-       />
+    <button class="btn-group" [style.background-color]="activeBtnGroup === 'compact' ? '#fff' : '#005baa'"
+      (click)="setActiveBtnGroup('compact')">
+      <img src="assets/compact.svg" [style.filter]="activeBtnGroup === 'compact' ? 'invert(80%)' : 'invert(0%)'" />
     </button>
-    <button 
-       class="btn-group"
-       [style.background-color]="activeBtnGroup === 'week' ? '#fff' : '#005baa'"
-       (click)="setActiveBtnGroup('week')"
-    > 
-       <img 
-          src="assets/week.svg" 
-          [style.filter]="activeBtnGroup === 'week' ? 'invert(80%)' : 'invert(0%)'" 
-        />
+    <button class="btn-group" [style.background-color]="activeBtnGroup === 'week' ? '#fff' : '#005baa'"
+      (click)="setActiveBtnGroup('week')">
+      <img src="assets/week.svg" [style.filter]="activeBtnGroup === 'week' ? 'invert(80%)' : 'invert(0%)'" />
     </button>
   </div>
 </mat-toolbar>

@@ -1,4 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges, HostBinding, HostListener } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  HostBinding,
+  HostListener,
+} from '@angular/core';
 import { DataService, MeasurementData } from '../data.service';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,7 +16,7 @@ import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/de
 @Component({
   selector: 'app-control-measures',
   templateUrl: './control-measures.component.html',
-  styleUrls: ['./control-measures.component.css']
+  styleUrls: ['./control-measures.component.css'],
 })
 export class ControlMeasuresComponent implements OnChanges {
   @Input() measurementId: number | null = null;
@@ -31,11 +38,11 @@ export class ControlMeasuresComponent implements OnChanges {
     }
   }
 
-  @HostListener('document:keydown.escape', ['$event']) // Обработчик нажатия клавиши Esc
+  @HostListener('document:keydown.escape', ['$event'])
   handleEscape(event: KeyboardEvent) {
     if (this.isFullscreen) {
       this.toggleFullscreen();
-      alert('Выход из полноэкранного режима'); // Выход из полноэкранного режима при нажатии Esc
+      alert('Выход из полноэкранного режима');
     }
   }
 
@@ -48,10 +55,10 @@ export class ControlMeasuresComponent implements OnChanges {
   addMeasurement() {
     const dialogRef = this.modalService.open(MeasurementModalComponent, {
       width: '400px',
-      data: { source: '', date: new Date() }
+      data: { source: '', date: new Date() },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.dataService.addMeasurement(this.measurementId!, result);
         this.loadMeasurementData(this.measurementId!);
@@ -67,10 +74,14 @@ export class ControlMeasuresComponent implements OnChanges {
     const selectedMeasurement = this.selectedMeasurements[0];
     const dialogRef = this.modalService.open(MeasurementModalComponent, {
       width: '400px',
-      data: { id: selectedMeasurement.id, source: selectedMeasurement.source, date: selectedMeasurement.date }
+      data: {
+        id: selectedMeasurement.id,
+        source: selectedMeasurement.source,
+        date: selectedMeasurement.date,
+      },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.dataService.editMeasurement(this.measurementId!, result);
         this.loadMeasurementData(this.measurementId!);
@@ -86,27 +97,31 @@ export class ControlMeasuresComponent implements OnChanges {
     const dialogRef = this.modalService.open(DeleteConfirmationModalComponent, {
       width: '400px',
       data: {
-        ids: this.selectedMeasurements.map(m => m.id)
-      }
+        ids: this.selectedMeasurements.map((m) => m.id),
+      },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.selectedMeasurements.forEach(measurement => {
-          this.dataService.deleteMeasurement(this.measurementId!, measurement.id);
+        this.selectedMeasurements.forEach((measurement) => {
+          this.dataService.deleteMeasurement(
+            this.measurementId!,
+            measurement.id
+          );
         });
         this.loadMeasurementData(this.measurementId!);
         this.selectedMeasurements = [];
       }
     });
   }
-  
 
   selectMeasurement(event: MatCheckboxChange, measurement: MeasurementData) {
     if (event.checked) {
       this.selectedMeasurements.push(measurement);
     } else {
-      this.selectedMeasurements = this.selectedMeasurements.filter(m => m !== measurement);
+      this.selectedMeasurements = this.selectedMeasurements.filter(
+        (m) => m !== measurement
+      );
     }
     this.updateCheckboxStates();
   }
@@ -122,23 +137,20 @@ export class ControlMeasuresComponent implements OnChanges {
   }
 
   updateCheckboxStates() {
-    this.allSelected = this.selectedMeasurements.length === this.measurementData.length;
-    this.indeterminate = this.selectedMeasurements.length > 0 && !this.allSelected;
+    this.allSelected =
+      this.selectedMeasurements.length === this.measurementData.length;
+    this.indeterminate =
+      this.selectedMeasurements.length > 0 && !this.allSelected;
   }
 
   showSingleSelectionError() {
     const dialogRef = this.modalService.open(SimpleMessageModalComponent, {
       width: '400px',
-      data: { message: 'Выберите только одну запись' }
+      data: { message: 'Выберите только одну запись' },
     });
 
-    dialogRef.afterClosed().subscribe(() => {
-      // действия после закрытия сообщения, если необходимо
-    });
+    dialogRef.afterClosed().subscribe(() => {});
   }
-
-
-  
 
   getDate(dateTime: Date): string {
     const isoDate = dateTime.toISOString().split('T')[0];
@@ -151,9 +163,13 @@ export class ControlMeasuresComponent implements OnChanges {
 
   sortMeasurements() {
     if (this.sortByDateDescending) {
-      this.measurementData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      this.measurementData.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
     } else {
-      this.measurementData.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      this.measurementData.sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      );
     }
   }
 
@@ -162,11 +178,10 @@ export class ControlMeasuresComponent implements OnChanges {
     this.sortMeasurements();
   }
 
-
   toggleFullscreen() {
     this.isFullscreen = !this.isFullscreen;
     if (this.isFullscreen) {
-      alert('Для выхода нажмите Esc'); // Вывод сообщения при входе в полноэкранный режим
+      alert('Для выхода нажмите Esc');
     }
   }
 }

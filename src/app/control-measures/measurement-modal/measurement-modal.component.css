@@ -1,37 +1,81 @@
-::ng-deep .mat-calendar-period-button .mdc-button__label   {
-    color:white !important;
- 
- }
- 
-  ::ng-deep .mat-calendar {     
-    color:white !important;
-    background-color: rgb(23, 9, 68) !important;
-  }
- 
-   ::ng-deep  .mat-calendar-body-cell-content {
-    color:rgb(99, 209, 211) !important;
-  }
- 
- 
-   ::ng-deep  .time-container-clock {
-    color:white !important;
-    background-color: rgb(23, 9, 68) !important;
- }
- 
-  ::ng-deep .time-container  {
-    color:white !important;
-    background-color: rgb(23, 9, 68) !important;
- }
- 
-  ::ng-deep .time-container-body-cell-content {
-    color:white !important;
- }
- ::ng-deep .time-container .mat-mdc-input-element {
-    color:white !important;
-    background-color: rgb(23, 9, 68) !important;
- }
+::ng-deep .mat-calendar-period-button .mdc-button__label {
+  color: #005baa !important;
+}
 
- .picker {
-    background-color: green !important;
-    color: orange !important;
- }
+::ng-deep .mat-calendar {
+  color: #005baa !important;
+  background-color: #e5eff7 !important;
+  border-radius: 4px 4px 0px 0px !important;
+}
+
+::ng-deep .mat-calendar-body-cell-content {
+  color: #005baa !important;
+}
+
+::ng-deep .mat-calendar-body-cell-content:hover {
+  color: #007be7 !important;
+  background-color: rgb(185, 217, 247) !important;
+}
+
+::ng-deep .time-container-clock {
+  color: #005baa !important;
+}
+
+::ng-deep .time-container {
+  color: #005baa !important;
+  background-color: #e5eff7 !important;
+  border-radius: 0px 0px 4px 4px !important;
+}
+
+::ng-deep .time-container-body-cell-content {
+  color: #005baa !important;
+}
+::ng-deep .time-container .mat-mdc-input-element {
+  color: #005baa !important;
+  background-color: #cce3f5 !important;
+  border-radius: 4px 4px 4px 4px !important;
+}
+
+.action-zone {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-save {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+  background-color: #005baa;
+  border-radius: 4px;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+}
+
+.btn-save:hover {
+  background-color: #00549e;
+  transition: 0.3s;
+}
+
+.btn-cancel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: white;
+  color: #005baa;
+  border: 1px solid #005baa;
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-cancel:hover {
+  background-color: rgb(228, 235, 250);
+  color: #00498a;
+  border: 1px solid #005096;
+  transition: 0.3s;
+}
+
+

@@ -12,7 +12,7 @@ export class AppComponent {
     this.selectedMeasurementId = id;
   }
   
-  selectedSection: string = 'measurements'; // По умолчанию выбраны замеры
+  selectedSection: string = 'measurements';
   splitDirection: 'horizontal' | 'vertical' = 'horizontal';
 
   onSectionSelected(section: string) {

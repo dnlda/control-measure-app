@@ -1,11 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DataService, Measurement } from '../data.service';
 
-
 @Component({
   selector: 'app-substation-list',
   templateUrl: './substation-list.component.html',
-  styleUrl: './substation-list.component.css'
+  styleUrl: './substation-list.component.css',
 })
 export class SubstationListComponent implements OnInit {
   measurements: Measurement[];
@@ -15,13 +14,13 @@ export class SubstationListComponent implements OnInit {
   idNumber: number | null = 1;
 
   constructor(private dataService: DataService) {
-    this.measurements = []
+    this.measurements = [];
   }
 
   ngOnInit(): void {
     this.loadMeasurements();
   }
-  
+
   loadMeasurements() {
     this.measurements = this.dataService.getAllMeasurements();
   }
@@ -30,6 +29,4 @@ export class SubstationListComponent implements OnInit {
     this.selectedMeasurementIdChange.emit(id);
     this.idNumber = id;
   }
-
-  
 }
