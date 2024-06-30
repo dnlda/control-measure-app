@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-delete-confirmation-modal',
@@ -8,13 +8,13 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class DeleteConfirmationModalComponent {
   @Input() data!: { id: number; date: Date; source: string };
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(public dialogRef: MatDialogRef< DeleteConfirmationModalComponent>,) {}
 
-  confirm() {
-    this.activeModal.close(true);
+  confirm(): void {
+    this.dialogRef.close(true);
   }
 
-  cancel() {
-    this.activeModal.dismiss();
+  cancel(): void {
+    this.dialogRef.close();
   }
 }

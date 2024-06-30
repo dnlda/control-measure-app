@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { measures } from './measurement-data';
 
 export interface MeasurementData {
   id: number;
@@ -23,66 +24,7 @@ export interface Measurement {
   providedIn: 'root',
 })
 export class DataService {
-  private measurements: Measurement[] = [
-    {
-      id: 1,
-      name: 'TRI',
-      voltage: 6,
-      data: [
-        {
-          id: 1,
-          date: new Date(),
-          source: 'Источник 1',
-          faze: 'a',
-          voltage: 2,
-          amperage: 2,
-          power: 2,
-          rPower: 3,
-          powerFactor: 5,
-        },
-        {
-          id: 2,
-          date: new Date(),
-          source: 'Источник 2',
-          faze: 'b',
-          voltage: 2,
-          amperage: 2,
-          power: 2,
-          rPower: 3,
-          powerFactor: 5,
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: 'TYURU',
-      voltage: 3,
-      data: [
-        {
-          id: 1,
-          date: new Date(),
-          source: 'Источник 1',
-          faze: 'c',
-          voltage: 2,
-          amperage: 2,
-          power: 2,
-          rPower: 3,
-          powerFactor: 5,
-        },
-        {
-          id: 2,
-          date: new Date(),
-          source: 'Источник 2',
-          faze: '-',
-          voltage: 2,
-          amperage: 2,
-          power: 2,
-          rPower: 3,
-          powerFactor: 5,
-        },
-      ],
-    },
-  ];
+  private measurements: Measurement[] = measures;
 
   constructor() {}
 
@@ -131,7 +73,7 @@ export class DataService {
   }
 
   private getRandomFaze(): string {
-    const fazes = ['a', 'b', 'c', '-'];
+    const fazes = ['a', 'b', 'c', '-', 'ab'];
     return fazes[Math.floor(Math.random() * fazes.length)];
   }
 

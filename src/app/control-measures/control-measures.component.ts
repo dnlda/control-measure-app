@@ -1,7 +1,9 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DataService, MeasurementData } from '../data.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatDialog } from '@angular/material/dialog';
 import { MeasurementModalComponent } from './measurement-modal/measurement-modal.component';
+import { SimpleMessageModalComponent } from './simple-message-modal/simple-message-modal.component';
 import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/delete-confirmation-modal.component';
 
 @Component({
@@ -12,12 +14,14 @@ import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/de
 export class ControlMeasuresComponent implements OnChanges {
   @Input() measurementId: number | null = null;
   measurementData: MeasurementData[] = [];
-  selectedMeasurement: MeasurementData | null = null;
+  selectedMeasurements: MeasurementData[] = [];
   sortByDateDescending = false;
+  allSelected = false;
+  indeterminate = false;
 
   constructor(
     private dataService: DataService,
-    private modalService: NgbModal
+    private modalService: MatDialog
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -29,74 +33,107 @@ export class ControlMeasuresComponent implements OnChanges {
   loadMeasurementData(id: number) {
     const measurement = this.dataService.getMeasurementById(id);
     this.measurementData = measurement ? measurement.data : [];
+    this.updateCheckboxStates();
   }
 
   addMeasurement() {
-    const modalRef = this.modalService.open(MeasurementModalComponent);
-    modalRef.componentInstance.data = { date: new Date(), source: '' };
+    const dialogRef = this.modalService.open(MeasurementModalComponent, {
+      width: '400px',
+      data: { source: '', date: new Date() }
+    });
 
-    modalRef.result.then(result => {
+    dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.dataService.addMeasurement(this.measurementId!, result);
         this.loadMeasurementData(this.measurementId!);
       }
-    }, reason => {
-      // Обработка закрытия модального окна без сохранения данных
     });
   }
 
   editSelectedMeasurement() {
-    if (this.selectedMeasurement) {
-      const modalRef = this.modalService.open(MeasurementModalComponent);
-      modalRef.componentInstance.data = {
-        id: this.selectedMeasurement.id,
-        date: this.selectedMeasurement.date,
-        source: this.selectedMeasurement.source
-      };
-
-      modalRef.result.then(result => {
-        if (result) {
-          this.dataService.editMeasurement(this.measurementId!, result);
-          this.loadMeasurementData(this.measurementId!);
-        }
-      }, reason => {
-        // Обработка закрытия модального окна без сохранения данных
-      });
+    if (this.selectedMeasurements.length !== 1) {
+      this.showSingleSelectionError();
+      return;
     }
+    const selectedMeasurement = this.selectedMeasurements[0];
+    const dialogRef = this.modalService.open(MeasurementModalComponent, {
+      width: '400px',
+      data: { id: selectedMeasurement.id, source: selectedMeasurement.source, date: selectedMeasurement.date }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dataService.editMeasurement(this.measurementId!, result);
+        this.loadMeasurementData(this.measurementId!);
+      }
+    });
   }
 
   confirmDeleteSelectedMeasurement() {
-    if (this.selectedMeasurement) {
-      const modalRef = this.modalService.open(DeleteConfirmationModalComponent);
-      modalRef.componentInstance.data = {
-        id: this.selectedMeasurement.id,
-        date: this.selectedMeasurement.date,
-        source: this.selectedMeasurement.source
-      };
-  
-      modalRef.result.then(result => {
-        if (result && this.selectedMeasurement) {
-          this.dataService.deleteMeasurement(this.measurementId!, this.selectedMeasurement.id);
-          this.loadMeasurementData(this.measurementId!);
-          this.selectedMeasurement = null; // Сбрасываем выбранное измерение после удаления
-        }
-      }, reason => {
-        // Обработка закрытия модального окна без подтверждения удаления
-      });
+    if (this.selectedMeasurements.length === 0) {
+      return;
     }
+
+    const dialogRef = this.modalService.open(DeleteConfirmationModalComponent, {
+      width: '400px',
+      data: {
+        ids: this.selectedMeasurements.map(m => m.id)
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.selectedMeasurements.forEach(measurement => {
+          this.dataService.deleteMeasurement(this.measurementId!, measurement.id);
+        });
+        this.loadMeasurementData(this.measurementId!);
+        this.selectedMeasurements = [];
+      }
+    });
   }
   
 
-  selectMeasurement(measurement: MeasurementData) {
-    if (this.selectedMeasurement === measurement) {
-      this.selectedMeasurement = null; // Сброс выбора, если тот же чекбокс был нажат повторно
+  selectMeasurement(event: MatCheckboxChange, measurement: MeasurementData) {
+    if (event.checked) {
+      this.selectedMeasurements.push(measurement);
     } else {
-      this.selectedMeasurement = measurement; // Выбор нового измерения
+      this.selectedMeasurements = this.selectedMeasurements.filter(m => m !== measurement);
     }
+    this.updateCheckboxStates();
   }
+
+  selectAll(event: MatCheckboxChange) {
+    this.allSelected = event.checked;
+    if (this.allSelected) {
+      this.selectedMeasurements = [...this.measurementData];
+    } else {
+      this.selectedMeasurements = [];
+    }
+    this.indeterminate = false;
+  }
+
+  updateCheckboxStates() {
+    this.allSelected = this.selectedMeasurements.length === this.measurementData.length;
+    this.indeterminate = this.selectedMeasurements.length > 0 && !this.allSelected;
+  }
+
+  showSingleSelectionError() {
+    const dialogRef = this.modalService.open(SimpleMessageModalComponent, {
+      width: '400px',
+      data: { message: 'Выберите только одну запись' }
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      // действия после закрытия сообщения, если необходимо
+    });
+  }
+
+
+  
 
   getDate(dateTime: Date): string {
-    return dateTime.toISOString().split('T')[0];
+    const isoDate = dateTime.toISOString().split('T')[0];
+    return isoDate.replace(/(\d{4})-(\d{2})-(\d{2})/, '$3.$2.$1');
   }
 
   getTime(dateTime: Date): string {

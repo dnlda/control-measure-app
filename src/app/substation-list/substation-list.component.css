@@ -82,37 +82,37 @@
 .measure-type {
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid #DEE2E6;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .substation-type {
-color: #005baa;
-background-color: white;
-display: flex;
-align-items: center;
-border: none;
-cursor: pointer;
-padding: 9px 12px;
-}
-
-.substation-type-text {
-  font-family: Segoe UI;
-font-size: 16px;
-font-weight: 400;
-line-height: 24px;
-text-align: left;
-margin: 0;
-}
-
-.equipment-type {
-  color: #495057;
-  background-color: #F2F2F2;
+  color: #005baa;
+  background-color: white;
   display: flex;
   align-items: center;
   border: none;
   cursor: pointer;
   padding: 9px 12px;
-  }
+}
+
+.substation-type-text {
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  margin: 0;
+}
+
+.equipment-type {
+  color: #495057;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  padding: 9px 12px;
+}
 
 .equipment-type-text {
   font-family: Segoe UI;
@@ -121,22 +121,21 @@ margin: 0;
   line-height: 24px;
   text-align: left;
   margin: 0;
-  }
+}
 
 .edit-type {
   display: flex;
   flex-direction: row;
-}  
+}
 
 .edit-text {
   font-family: Segoe UI;
-font-size: 14px;
-font-weight: 400;
-line-height: 21px;
-text-align: left;
-margin: 0;
-
-}  
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: left;
+  margin: 0;
+}
 
 .list-type {
   display: flex;
@@ -144,20 +143,20 @@ margin: 0;
   color: #333333;
   padding: 4.5px 12px;
   border-radius: 4px 0px 0px 4px;
-  border: 1px solid #CED4DA;
+  border: 1px solid #ced4da;
   border-right: none;
-  background-color: #F2F2F2;
-}  
+  background-color: #f2f2f2;
+}
 
 .statesment-type {
   display: flex;
   flex-direction: row;
-  color: #4F4F4F;
+  color: #4f4f4f;
   padding: 4.5px 12px;
   border-radius: 0px 4px 4px 0px;
-  border: 1px solid #CED4DA;
+  border: 1px solid #ced4da;
   background-color: white;
-}  
+}
 
 .filter-area {
   display: flex;
@@ -181,17 +180,17 @@ margin: 0;
   align-items: center;
   gap: 10px;
   max-height: 32px;
- 
+
   color: #333333;
 }
 
 .type-txt {
   font-family: Segoe UI;
-font-size: 16px;
-font-weight: 400;
-line-height: 21.28px;
-text-align: left;
-margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21.28px;
+  text-align: left;
+  margin: 0;
 }
 
 .select {
@@ -199,28 +198,63 @@ margin: 0;
   flex-direction: row;
 }
 
-.select ::ng-deep .mdc-text-field--outlined .mat-mdc-form-field-infix, .mdc-text-field--no-label .mat-mdc-form-field-infix {
-padding-top: 4px;
+.select ::ng-deep .mdc-text-field--outlined .mat-mdc-form-field-infix,
+.mdc-text-field--no-label .mat-mdc-form-field-infix {
+  padding-top: 4px;
 }
 
 .select ::ng-deep .mat-mdc-select-value-text {
   color: rgb(0, 0, 0);
   font-family: Segoe UI;
-font-size: 14px;
-font-weight: 400;
-line-height: 21px;
-text-align: left;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: left;
+}
 
+.mat-slide-toggle ::ng-deep .mdc-switch .mdc-switch__handle-track {
+  width: 17px !important;
 }
 
 
+.mat-slide-toggle ::ng-deep .mdc-switch {
+  width: 32px !important;
+  border: 1px solid #DEE2E6;
+  border-radius: 32px;
+  
+}
+
+.mat-slide-toggle ::ng-deep .mdc-form-field>label  {
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16.8px;
+  text-align: left;
+}
+
+.mat-slide-toggle ::ng-deep .mdc-switch:enabled .mdc-switch__track::before {
+  background-color: white !important;
+}
+
+.mat-slide-toggle ::ng-deep .mdc-switch:enabled .mdc-switch__track::after {
+  background-color:  #005baa !important;
+}
+
+.mat-slide-toggle ::ng-deep .mdc-switch .mdc-switch__handle{
+   width: 14px !important;
+   height: 14px !important;
+}
+
+.mat-slide-toggle ::ng-deep .mdc-elevation-overlay{
+  background-color: #DEE2E6 !important;
+  border: 1px solid #DEE2E6;
+}
 
 
 .table {
   width: 100%;
   border-collapse: collapse;
 }
-
 
 .table th,
 .table td {
@@ -229,10 +263,6 @@ text-align: left;
   padding: 8px;
   text-align: left; /* Выравнивание контента по левому краю */
   white-space: nowrap; /* Предотвращение переноса текста */
-}
-
-.table tr:hover {
-  background-color: #E5EFF7;
 }
 
 .table th {
@@ -244,8 +274,3 @@ text-align: left;
   border: 1px solid #ddd;
   padding: 8px;
 }
-
-
-
-
-

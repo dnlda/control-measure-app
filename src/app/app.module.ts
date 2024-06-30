@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -19,6 +20,10 @@ import { ServiceComponent } from './service/service.component';
 import { DataService } from './data.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularSplitModule } from 'angular-split';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { SimpleMessageModalComponent } from './control-measures/simple-message-modal/simple-message-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,7 @@ import { AngularSplitModule } from 'angular-split';
     SubstationListComponent,
     ReportsComponent,
     ServiceComponent,
+    SimpleMessageModalComponent
   ],
   imports: [
     BrowserModule,
@@ -41,8 +47,12 @@ import { AngularSplitModule } from 'angular-split';
     ReactiveFormsModule,
     AngularSplitModule,
     MatButtonToggleModule,
+    MatDialogModule,
     MatSlideToggleModule,
-    MatSelectModule
+    MatDatepickerModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatNativeDateModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

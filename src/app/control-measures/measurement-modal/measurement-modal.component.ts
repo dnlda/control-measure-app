@@ -1,20 +1,27 @@
-import { Component, Input } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
 @Component({
-  selector: 'app-measurement-modal',
-  templateUrl: './measurement-modal.component.html'
+  selector: 'app-measurement-dialog',
+  templateUrl: './measurement-modal.component.html',
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' } // Установите нужную локаль
+  ]
 })
 export class MeasurementModalComponent {
-  @Input() data!: { id?: number; date: Date; source: string };
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(
+    public dialogRef: MatDialogRef<MeasurementModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id?: number; source: string; date: Date },
+    private dateAdapter: DateAdapter<Date>
+  ) {}
 
-  save() {
-    this.activeModal.close(this.data);
+  save(): void {
+    this.dialogRef.close(this.data);
   }
 
-  cancel() {
-    this.activeModal.dismiss();
+  cancel(): void {
+    this.dialogRef.close();
   }
 }

@@ -12,6 +12,7 @@ export class SubstationListComponent implements OnInit {
   @Output() selectedMeasurementIdChange = new EventEmitter<number>();
   defaultOptionType = 'option1';
   defaultOptionPy = 'option1';
+  idNumber: number | null = 1;
 
   constructor(private dataService: DataService) {
     this.measurements = []
@@ -27,6 +28,7 @@ export class SubstationListComponent implements OnInit {
 
   selectMeasurement(id: number) {
     this.selectedMeasurementIdChange.emit(id);
+    this.idNumber = id;
   }
 
   

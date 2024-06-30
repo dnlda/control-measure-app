@@ -17,41 +17,48 @@
   </div>
  <div class="sort-info">
   <p class="txt-info">Нет провереных элементов</p>
-  <p><mat-slide-toggle color="primary" hideIcon="true">Группировать по дате</mat-slide-toggle></p>
+  <mat-slide-toggle class="mat-slide-toggle" color="primary"  hideIcon="true">Группировать</mat-slide-toggle>
  </div>
-  <table class="table">
-    
-    <thead>
-      <tr>
-        <th class="checkbox-column"></th>
-        <th>Дата</th>
-        <th>Время</th>
-        <th>Источник</th>
-        <th>Фаза</th>
-        <th>U, kB</th>
-        <th>I, A</th>
-        <th>P, MBt</th>
-        <th>Q, Mвар</th>
-        <th>cos φ</th>
-      </tr>
-    </thead>
-    <button class="btn btn-secondary" (click)="addMeasurement()" > <img src="assets/add.svg"/><span class="btn-text">Добавить измерение</span></button> <!--(click)="addMeasurement()"-->
-    <tbody>
-      <tr *ngFor="let measurement of measurementData">
-      
-        <td  class="checkbox-column">
-          <input type="checkbox" name="selectedMeasurement" (change)="selectMeasurement(measurement)" [checked]="selectedMeasurement === measurement" > <!--(change)="selectMeasurement(measurement)" [checked]="selectedMeasurement === measurement"-->
-        </td>
-        <td>{{ getDate(measurement.date) }}</td>
-        <td>{{ getTime(measurement.date) }}</td>
-        <td>{{ measurement.source }}</td>
-        <td>{{ measurement.faze }}</td>
-        <td>{{ measurement.voltage }}</td>
-        <td>{{ measurement.amperage }}</td>
-        <td>{{ measurement.power }}</td>
-        <td>{{ measurement. rPower }}</td>
-        <td>{{ measurement.powerFactor }}</td>
-      </tr>
-    </tbody>
-  </table>
+ <table class="table">
+  <thead>
+    <tr>
+      <th class="checkbox-column">
+        <mat-checkbox color="primary" (change)="selectAll($event)" [checked]="allSelected" [indeterminate]="indeterminate"></mat-checkbox>
+      </th>
+      <th>Дата</th>
+      <th>Время</th>
+      <th>Источник</th>
+      <th>Фаза</th>
+      <th>U, kB</th>
+      <th>I, A</th>
+      <th>P, MBt</th>
+      <th>Q, Mвар</th>
+      <th>cos φ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="button-cell" colspan="10">
+        <button class="btn btn-secondary" (click)="addMeasurement()">
+          <img src="assets/add.svg"/>
+          <span class="btn-text">Добавить измерение</span>
+        </button>
+      </td>
+    </tr>
+    <tr *ngFor="let measurement of measurementData">
+      <td class="checkbox-column">
+        <mat-checkbox color="primary" (change)="selectMeasurement($event, measurement)" [checked]="selectedMeasurements.includes(measurement)"></mat-checkbox>
+      </td>
+      <td>{{ getDate(measurement.date) }}</td>
+      <td>{{ getTime(measurement.date) }}</td>
+      <td>{{ measurement.source }}</td>
+      <td>{{ measurement.faze }}</td>
+      <td>{{ measurement.voltage }}</td>
+      <td>{{ measurement.amperage }}</td>
+      <td>{{ measurement.power }}</td>
+      <td>{{ measurement.rPower }}</td>
+      <td>{{ measurement.powerFactor }}</td>
+    </tr>
+  </tbody>
+</table>
 </div>
