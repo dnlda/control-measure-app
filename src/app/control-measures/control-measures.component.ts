@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, HostBinding, HostListener } from '@angular/core';
 import { DataService, MeasurementData } from '../data.service';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,6 +18,7 @@ export class ControlMeasuresComponent implements OnChanges {
   sortByDateDescending = false;
   allSelected = false;
   indeterminate = false;
+  isFullscreen = false;
 
   constructor(
     private dataService: DataService,
@@ -27,6 +28,14 @@ export class ControlMeasuresComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['measurementId'] && this.measurementId !== null) {
       this.loadMeasurementData(this.measurementId);
+    }
+  }
+
+  @HostListener('document:keydown.escape', ['$event']) // Обработчик нажатия клавиши Esc
+  handleEscape(event: KeyboardEvent) {
+    if (this.isFullscreen) {
+      this.toggleFullscreen();
+      alert('Выход из полноэкранного режима'); // Выход из полноэкранного режима при нажатии Esc
     }
   }
 
@@ -145,6 +154,19 @@ export class ControlMeasuresComponent implements OnChanges {
       this.measurementData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     } else {
       this.measurementData.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    }
+  }
+
+  toggleSortOrder() {
+    this.sortByDateDescending = !this.sortByDateDescending;
+    this.sortMeasurements();
+  }
+
+
+  toggleFullscreen() {
+    this.isFullscreen = !this.isFullscreen;
+    if (this.isFullscreen) {
+      alert('Для выхода нажмите Esc'); // Вывод сообщения при входе в полноэкранный режим
     }
   }
 }

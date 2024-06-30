@@ -1,4 +1,4 @@
-<div class="measure-table">
+<div class="measure-table" [class.fullscreen]="isFullscreen">
   <div class="table-header"><img src="assets/design-equipment.svg"/><h1 class="table-header-txt">РТСН\НН-2</h1></div>
   <div class="actions">
     <div class="actions-left">
@@ -12,12 +12,15 @@
         <button class="btn btn-view" ><img src="assets/vertical.svg"/></button> <!--(click)="setHorizontalView()" -->
         <button class="btn btn-view" ><img src="assets/horizontal.svg"/></button> <!--(click)="setVerticalView()" -->
        </div>
-       <button class="btn btn-expand" ><img src="assets/expand.svg"/></button> <!--(click)="setVerticalView()" -->
+       <button class="btn btn-expand" (click)="toggleFullscreen()" ><img src="assets/expand.svg"/></button> <!--(click)="setVerticalView()" -->
     </div>
   </div>
  <div class="sort-info">
-  <p class="txt-info">Нет провереных элементов</p>
-  <mat-slide-toggle class="mat-slide-toggle" color="primary"  hideIcon="true">Группировать</mat-slide-toggle>
+  <span class="txt-info">
+    <p>Нет</p>
+    <p>провереных элементов</p>
+  </span>
+  <mat-slide-toggle class="mat-slide-toggle"  [checked]="sortByDateDescending" (change)="toggleSortOrder()" color="primary" hideIcon="true">Группировать по дате</mat-slide-toggle>
  </div>
  <table class="table">
   <thead>
@@ -53,11 +56,11 @@
       <td>{{ getTime(measurement.date) }}</td>
       <td>{{ measurement.source }}</td>
       <td>{{ measurement.faze }}</td>
-      <td>{{ measurement.voltage }}</td>
-      <td>{{ measurement.amperage }}</td>
-      <td>{{ measurement.power }}</td>
-      <td>{{ measurement.rPower }}</td>
-      <td>{{ measurement.powerFactor }}</td>
+      <td >{{ measurement.voltage !== 0 ? measurement.voltage : '' }}</td>
+      <td >{{ measurement.amperage !== 0 ? measurement.amperage : '' }}</td>
+      <td >{{ measurement.power !== 0 ?measurement.power : '' }}</td>
+      <td >{{measurement.rPower !== 0 ? measurement.rPower : '' }}</td>
+      <td >{{ measurement.powerFactor !== 0 ? measurement.powerFactor : '' }}</td>
     </tr>
   </tbody>
 </table>
