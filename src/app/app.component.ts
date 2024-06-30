@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  selectedMeasurementId: number | null = 1;
+
+  onMeasurementIdChange(id: number) {
+    this.selectedMeasurementId = id;
+  }
+  
   selectedSection: string = 'measurements'; // По умолчанию выбраны замеры
   splitDirection: 'horizontal' | 'vertical' = 'horizontal';
 

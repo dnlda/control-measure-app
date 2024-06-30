@@ -53,15 +53,15 @@
     </div>
     <table class="table">
         <thead>
-            <tr>
+            <tr >
                 <th>Наименование</th>
                 <th>U ном.</th>
             </tr>
         </thead>
         <tbody>
-            <tr> <!--*ngFor="let measurement of measurements"-->
-                <td>РТСН\НН-1</td>
-                <td>2342</td>
+            <tr *ngFor="let measurement of measurements" (click)="selectMeasurement(measurement.id)"> <!--*ngFor="let measurement of measurements"-->
+                <td>{{measurement.name}}</td>
+                <td>{{measurement.voltage}}</td>
             </tr>
         </tbody>
     </table>

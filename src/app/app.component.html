@@ -3,12 +3,12 @@
 <as-split [direction]="splitDirection">
   <as-split-area>
     <div>
-      <app-substation-list></app-substation-list>
+      <app-substation-list (selectedMeasurementIdChange)="onMeasurementIdChange($event)"></app-substation-list>
     </div>
   </as-split-area>
   <as-split-area>
     <div *ngIf="selectedSection === 'measurements'">
-      <app-control-measures></app-control-measures>
+      <app-control-measures [measurementId]="selectedMeasurementId"></app-control-measures>
     </div>
     <div *ngIf="selectedSection === 'reports'">
       Отчеты

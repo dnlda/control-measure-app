@@ -221,12 +221,18 @@ text-align: left;
   border-collapse: collapse;
 }
 
+
 .table th,
 .table td {
   border: 1px solid #ddd;
+  cursor: pointer;
   padding: 8px;
   text-align: left; /* Выравнивание контента по левому краю */
   white-space: nowrap; /* Предотвращение переноса текста */
+}
+
+.table tr:hover {
+  background-color: #E5EFF7;
 }
 
 .table th {

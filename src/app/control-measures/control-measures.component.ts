@@ -1,43 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { DataService, MeasurementData } from '../data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MeasurementModalComponent } from './measurement-modal/measurement-modal.component';
 import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/delete-confirmation-modal.component';
-import { Measurement } from '../data.service';
 
 @Component({
   selector: 'app-control-measures',
   templateUrl: './control-measures.component.html',
   styleUrls: ['./control-measures.component.css']
 })
-export class ControlMeasuresComponent implements OnInit {
-  measurements: Measurement[];
-  selectedMeasurement: Measurement | null = null;
+export class ControlMeasuresComponent implements OnChanges {
+  @Input() measurementId: number | null = null;
+  measurementData: MeasurementData[] = [];
+  selectedMeasurement: MeasurementData | null = null;
   sortByDateDescending = false;
 
   constructor(
     private dataService: DataService,
     private modalService: NgbModal
-  ) {
-    this.measurements = [];
+  ) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['measurementId'] && this.measurementId !== null) {
+      this.loadMeasurementData(this.measurementId);
+    }
   }
 
-  ngOnInit(): void {
-    this.loadMeasurements();
-  }
-
-  loadMeasurements() {
-    this.measurements = this.dataService.getAllMeasurements();
+  loadMeasurementData(id: number) {
+    const measurement = this.dataService.getMeasurementById(id);
+    this.measurementData = measurement ? measurement.data : [];
   }
 
   addMeasurement() {
     const modalRef = this.modalService.open(MeasurementModalComponent);
-    modalRef.componentInstance.data = null;
+    modalRef.componentInstance.data = { date: new Date(), source: '' };
 
     modalRef.result.then(result => {
       if (result) {
-        this.dataService.addMeasurement(result);
-        this.loadMeasurements();
+        this.dataService.addMeasurement(this.measurementId!, result);
+        this.loadMeasurementData(this.measurementId!);
       }
     }, reason => {
       // Обработка закрытия модального окна без сохранения данных
@@ -47,12 +48,16 @@ export class ControlMeasuresComponent implements OnInit {
   editSelectedMeasurement() {
     if (this.selectedMeasurement) {
       const modalRef = this.modalService.open(MeasurementModalComponent);
-      modalRef.componentInstance.data = this.selectedMeasurement;
-  
+      modalRef.componentInstance.data = {
+        id: this.selectedMeasurement.id,
+        date: this.selectedMeasurement.date,
+        source: this.selectedMeasurement.source
+      };
+
       modalRef.result.then(result => {
         if (result) {
-          this.dataService.editMeasurement({ ...this.selectedMeasurement, ...result });
-          this.loadMeasurements();
+          this.dataService.editMeasurement(this.measurementId!, result);
+          this.loadMeasurementData(this.measurementId!);
         }
       }, reason => {
         // Обработка закрытия модального окна без сохранения данных
@@ -63,12 +68,16 @@ export class ControlMeasuresComponent implements OnInit {
   confirmDeleteSelectedMeasurement() {
     if (this.selectedMeasurement) {
       const modalRef = this.modalService.open(DeleteConfirmationModalComponent);
-      modalRef.componentInstance.data = this.selectedMeasurement;
-
+      modalRef.componentInstance.data = {
+        id: this.selectedMeasurement.id,
+        date: this.selectedMeasurement.date,
+        source: this.selectedMeasurement.source
+      };
+  
       modalRef.result.then(result => {
         if (result && this.selectedMeasurement) {
-          this.dataService.deleteMeasurement(this.selectedMeasurement.id);
-          this.loadMeasurements();
+          this.dataService.deleteMeasurement(this.measurementId!, this.selectedMeasurement.id);
+          this.loadMeasurementData(this.measurementId!);
           this.selectedMeasurement = null; // Сбрасываем выбранное измерение после удаления
         }
       }, reason => {
@@ -76,8 +85,9 @@ export class ControlMeasuresComponent implements OnInit {
       });
     }
   }
+  
 
-  selectMeasurement(measurement: Measurement) {
+  selectMeasurement(measurement: MeasurementData) {
     if (this.selectedMeasurement === measurement) {
       this.selectedMeasurement = null; // Сброс выбора, если тот же чекбокс был нажат повторно
     } else {
@@ -95,9 +105,9 @@ export class ControlMeasuresComponent implements OnInit {
 
   sortMeasurements() {
     if (this.sortByDateDescending) {
-      this.measurements.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      this.measurementData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     } else {
-      this.measurements.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      this.measurementData.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
     }
   }
 }

@@ -3,19 +3,18 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-delete-confirmation-modal',
-  templateUrl: './delete-confirmation-modal.component.html',
-  styleUrls: ['./delete-confirmation-modal.component.css']
+  templateUrl: './delete-confirmation-modal.component.html'
 })
 export class DeleteConfirmationModalComponent {
-  @Input() data: any;
+  @Input() data!: { id: number; date: Date; source: string };
 
   constructor(public activeModal: NgbActiveModal) {}
 
-  onDelete(): void {
+  confirm() {
     this.activeModal.close(true);
   }
 
-  onCancel(): void {
+  cancel() {
     this.activeModal.dismiss();
   }
 }

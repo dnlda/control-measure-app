@@ -1,41 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-measurement-modal',
-  templateUrl: './measurement-modal.component.html',
-  styleUrls: ['./measurement-modal.component.css']
+  templateUrl: './measurement-modal.component.html'
 })
-export class MeasurementModalComponent implements OnInit {
-  @Input() data: any; // Данные, передаваемые из родительского компонента
-  measurementForm: FormGroup;
+export class MeasurementModalComponent {
+  @Input() data!: { id?: number; date: Date; source: string };
 
-  constructor(
-    public modal: NgbActiveModal,
-    private fb: FormBuilder
-  ) {
-    this.measurementForm = this.fb.group({
-      date: [''],
-      source: [''],
-      faze: [''],
-      voltage: [''],
-      amperage: [''],
-      power: [''],
-      rPower: [''],
-      powerFactor: ['']
-    });
+  constructor(public activeModal: NgbActiveModal) {}
+
+  save() {
+    this.activeModal.close(this.data);
   }
 
-  ngOnInit(): void {
-    if (this.data) {
-      this.measurementForm.patchValue(this.data);
-    }
-  }
-
-  onSubmit() {
-    if (this.measurementForm.valid) {
-      this.modal.close(this.measurementForm.value);
-    }
+  cancel() {
+    this.activeModal.dismiss();
   }
 }
