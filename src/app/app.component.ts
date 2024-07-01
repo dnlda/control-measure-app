@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'my-app',
@@ -7,19 +7,37 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   selectedMeasurementId: number | null = 1;
+  selectedSection: string = 'measurements';
+  splitDirection: 'horizontal' | 'vertical' = 'horizontal';
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.updateSplitDirection();
+  }
+
+  ngOnInit() {
+    this.updateSplitDirection(); // Вызов функции при загрузке компонента
+  }
 
   onMeasurementIdChange(id: number) {
     this.selectedMeasurementId = id;
   }
-  
-  selectedSection: string = 'measurements';
-  splitDirection: 'horizontal' | 'vertical' = 'horizontal';
 
   onSectionSelected(section: string) {
     this.selectedSection = section;
+    this.updateSplitDirection(); // Вызов функции при изменении раздела
   }
 
   onBtnGroupSelected(group: string) {
     this.splitDirection = group === 'compact' ? 'horizontal' : 'vertical';
+  }
+
+  private updateSplitDirection() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 1024) {
+      this.splitDirection = 'vertical';
+    } else {
+      this.splitDirection = 'horizontal';
+    }
   }
 }

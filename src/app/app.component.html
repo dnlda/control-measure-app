@@ -1,6 +1,6 @@
 <app-header (sectionSelected)="onSectionSelected($event)" (btnGroupSelected)="onBtnGroupSelected($event)"></app-header>
 
-<as-split [direction]="splitDirection">
+<as-split [direction]="splitDirection" [ngClass]="{'vertical-split': splitDirection === 'vertical'}">
   <as-split-area>
     <div>
       <app-substation-list (selectedMeasurementIdChange)="onMeasurementIdChange($event)"></app-substation-list>
@@ -18,4 +18,6 @@
     </div>
   </as-split-area>
 </as-split>
-<div class="content">
+<footer class="footer">
+  <p>Версия 11.6.5.41</p>
+</footer>
