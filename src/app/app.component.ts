@@ -16,7 +16,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.updateSplitDirection(); // Вызов функции при загрузке компонента
+    this.updateSplitDirection();
   }
 
   onMeasurementIdChange(id: number) {
@@ -25,7 +25,7 @@ export class AppComponent {
 
   onSectionSelected(section: string) {
     this.selectedSection = section;
-    this.updateSplitDirection(); // Вызов функции при изменении раздела
+    this.updateSplitDirection();
   }
 
   onBtnGroupSelected(group: string) {

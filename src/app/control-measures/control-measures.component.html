@@ -37,8 +37,7 @@
     <thead>
       <tr>
         <th class="checkbox-column">
-          <mat-checkbox color="primary" (change)="selectAll($event)" [checked]="allSelected"
-            [indeterminate]="indeterminate"></mat-checkbox>
+          <input type="checkbox" class="form-check-input" (change)="selectAll($event)" [checked]="allSelected" [indeterminate]="indeterminate">
         </th>
         <th>Дата</th>
         <th>Время</th>
@@ -62,8 +61,7 @@
       </tr>
       <tr *ngFor="let measurement of measurementData">
         <td class="checkbox-column">
-          <mat-checkbox color="primary" (change)="selectMeasurement($event, measurement)"
-            [checked]="selectedMeasurements.includes(measurement)"></mat-checkbox>
+          <input type="checkbox" class="form-check-input" (change)="selectMeasurement($event, measurement)" [checked]="selectedMeasurements.includes(measurement)">
         </td>
         <td>{{ getDate(measurement.date) }}</td>
         <td>{{ getTime(measurement.date) }}</td>

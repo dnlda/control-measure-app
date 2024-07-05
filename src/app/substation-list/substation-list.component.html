@@ -20,6 +20,7 @@
         <button class="equipment-type">
             <p class="equipment-type-text">Оборудование</p>
         </button>
+       <div class="divider"></div>
     </div>
     <div class="edit-type">
         <button class="list-type">
@@ -33,22 +34,18 @@
         <div class="select-area">
             <div class="type">
                 <p class="type-txt">Тип</p>
-                <mat-form-field class="select" color="primary" appearance="outline">
-                    <mat-select class="select-test" [(ngModel)]="defaultOptionType">
-                        <mat-option value="option1">Трансформаторы</mat-option>
-                        <mat-option value="option2">Транзисторы</mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <select class="form-select select" [(ngModel)]="defaultOptionType">
+                    <option value="option1">Трансформаторы</option>
+                    <option value="option2">Транзисторы</option>
+                  </select>
             </div>
             <div class="type">
                 <p class="type-txt">РУ</p>
-                <mat-form-field class="select" color="primary" appearance="outline">
-                    <mat-select class="select-test" [(ngModel)]="defaultOptionPy">
-                        <mat-option value="option1">110</mat-option>
-                        <mat-option value="option2">100</mat-option>
-                        <mat-option value="option3">220</mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <select class="form-select select" [(ngModel)]="defaultOptionPy">
+                    <option value="option1">110</option>
+                    <option value="option2">100</option>
+                    <option value="option3">220</option>
+                  </select>
             </div>
         </div>
         <mat-slide-toggle class="mat-slide-toggle" color="primary" hideIcon="true">Схема</mat-slide-toggle>

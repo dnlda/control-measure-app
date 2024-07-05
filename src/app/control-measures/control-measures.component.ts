@@ -115,8 +115,9 @@ export class ControlMeasuresComponent implements OnChanges {
     });
   }
 
-  selectMeasurement(event: MatCheckboxChange, measurement: MeasurementData) {
-    if (event.checked) {
+  selectMeasurement(event: Event, measurement: MeasurementData) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.checked) {
       this.selectedMeasurements.push(measurement);
     } else {
       this.selectedMeasurements = this.selectedMeasurements.filter(
@@ -125,9 +126,9 @@ export class ControlMeasuresComponent implements OnChanges {
     }
     this.updateCheckboxStates();
   }
-
-  selectAll(event: MatCheckboxChange) {
-    this.allSelected = event.checked;
+  selectAll(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.allSelected = inputElement.checked;
     if (this.allSelected) {
       this.selectedMeasurements = [...this.measurementData];
     } else {
