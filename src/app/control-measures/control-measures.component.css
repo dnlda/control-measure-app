@@ -70,6 +70,10 @@
   color: red;
 }
 
+.txt-info p {
+  margin: 0;
+}
+
 .measure-table {
   display: flex;
   flex-direction: column;

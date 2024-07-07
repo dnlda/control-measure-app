@@ -117,7 +117,7 @@ export const measures: Measurement[] = [
   {
     id: 3,
     name: 'БТ1\\НН-2',
-    voltage: 6,
+    voltage: 10.5,
     data: [
       {
         id: 1,
@@ -168,7 +168,7 @@ export const measures: Measurement[] = [
   {
     id: 4,
     name: 'БТ-1\\ВН',
-    voltage: 6,
+    voltage: 110,
     data: [
       {
         id: 1,
