@@ -1,6 +1,6 @@
 <div class="measure-table" [class.fullscreen]="isFullscreen">
   <div class="table-header"><img src="assets/design-equipment.svg" />
-    <h1 class="table-header-txt">РТСН\НН-2</h1>
+    <h1 class="table-header-txt">{{ measurementSetName}}</h1>
   </div>
   <div class="actions">
     <div class="actions-left">
@@ -13,7 +13,8 @@
       <button class="btn btn-primary" (click)="editSelectedMeasurement()"><img src="assets/edit.svg" />
         <p class="btn-text">Редактировать</p>
       </button>
-      <button class="btn btn-primary" (click)="confirmDeleteSelectedMeasurement()"> <img src="assets/delete.svg" />
+      <button class="btn btn-primary" (click)="confirmDeleteSelectedMeasurement()" [disabled]="selectedMeasurements.length === 0">
+        <img src="assets/delete.svg" />
         <p class="btn-text">Удалить</p>
       </button>
     </div>

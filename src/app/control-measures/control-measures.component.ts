@@ -3,11 +3,9 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
-  HostBinding,
   HostListener,
 } from '@angular/core';
 import { DataService, MeasurementData } from '../data.service';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
 import { MeasurementModalComponent } from './measurement-modal/measurement-modal.component';
 import { SimpleMessageModalComponent } from './simple-message-modal/simple-message-modal.component';
@@ -26,6 +24,7 @@ export class ControlMeasuresComponent implements OnChanges {
   allSelected = false;
   indeterminate = false;
   isFullscreen = false;
+  measurementSetName = '';
 
   constructor(
     private dataService: DataService,
@@ -35,6 +34,7 @@ export class ControlMeasuresComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['measurementId'] && this.measurementId !== null) {
       this.loadMeasurementData(this.measurementId);
+      this.measurementSetName = this.getMeasurementSetName(this.measurementId);
     }
   }
 
@@ -50,6 +50,11 @@ export class ControlMeasuresComponent implements OnChanges {
     const measurement = this.dataService.getMeasurementById(id);
     this.measurementData = measurement ? measurement.data : [];
     this.updateCheckboxStates();
+  }
+
+  getMeasurementSetName(id: number): string {
+    const measurement = this.dataService.getMeasurementById(id);
+    return measurement ? measurement.name : '';
   }
 
   addMeasurement() {
@@ -91,23 +96,18 @@ export class ControlMeasuresComponent implements OnChanges {
 
   confirmDeleteSelectedMeasurement() {
     if (this.selectedMeasurements.length === 0) {
-      return;
+      return; // Если нет выбранных измерений, ничего не делаем
     }
 
     const dialogRef = this.modalService.open(DeleteConfirmationModalComponent, {
       width: '400px',
-      data: {
-        ids: this.selectedMeasurements.map((m) => m.id),
-      },
+      data: { ids: this.selectedMeasurements.map((m) => m.id) }, // Передача данных в модальное окно
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
+      if (result) { // Если пользователь подтвердил удаление
         this.selectedMeasurements.forEach((measurement) => {
-          this.dataService.deleteMeasurement(
-            this.measurementId!,
-            measurement.id
-          );
+          this.dataService.deleteMeasurement(this.measurementId!, measurement.id);
         });
         this.loadMeasurementData(this.measurementId!);
         this.selectedMeasurements = [];
