@@ -86,7 +86,7 @@ export class DataService {
   }
 
   private getRandomFaze(): string {
-    const fazes = ['a', 'b', 'c', '-', 'ab'];
+    const fazes = ['a', 'b', 'c', '—', 'ab'];
     return fazes[Math.floor(Math.random() * fazes.length)];
   }
 

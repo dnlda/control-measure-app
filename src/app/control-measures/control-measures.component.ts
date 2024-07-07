@@ -96,18 +96,21 @@ export class ControlMeasuresComponent implements OnChanges {
 
   confirmDeleteSelectedMeasurement() {
     if (this.selectedMeasurements.length === 0) {
-      return; // Если нет выбранных измерений, ничего не делаем
+      return;
     }
 
     const dialogRef = this.modalService.open(DeleteConfirmationModalComponent, {
       width: '400px',
-      data: { ids: this.selectedMeasurements.map((m) => m.id) }, // Передача данных в модальное окно
+      data: { ids: this.selectedMeasurements.map((m) => m.id) },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) { // Если пользователь подтвердил удаление
+      if (result) {
         this.selectedMeasurements.forEach((measurement) => {
-          this.dataService.deleteMeasurement(this.measurementId!, measurement.id);
+          this.dataService.deleteMeasurement(
+            this.measurementId!,
+            measurement.id
+          );
         });
         this.loadMeasurementData(this.measurementId!);
         this.selectedMeasurements = [];
