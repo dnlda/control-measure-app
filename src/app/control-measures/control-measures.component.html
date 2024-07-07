@@ -30,8 +30,10 @@
       <p>Нет</p>
       <p>провереных элементов</p>
     </span>
-    <mat-slide-toggle class="mat-slide-toggle" [checked]="sortByDateDescending" (change)="toggleSortOrder()"
-      color="primary" hideIcon="true">Группировать по дате</mat-slide-toggle>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" [checked]="sortByDateDescending" (change)="toggleSortOrder()">
+      <label class="form-check-label">Группировать по дате</label>
+    </div>
   </div>
   <table class="table">
     <thead>
@@ -59,11 +61,11 @@
           </button>
         </td>
       </tr>
-      <tr *ngFor="let measurement of measurementData">
+      <tr *ngFor="let measurement of measurementData" [class.selected-row]="selectedMeasurements.includes(measurement)">
         <td class="checkbox-column">
           <input type="checkbox" class="form-check-input" (change)="selectMeasurement($event, measurement)" [checked]="selectedMeasurements.includes(measurement)">
         </td>
-        <td>{{ getDate(measurement.date) }}</td>
+        <td >{{ getDate(measurement.date) }}</td>
         <td>{{ getTime(measurement.date) }}</td>
         <td>{{ measurement.source }}</td>
         <td>{{ measurement.faze }}</td>

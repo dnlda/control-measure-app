@@ -65,8 +65,13 @@
   background-color: #005baa;
   border-radius: 4px;
   border: none;
+  cursor: pointer;
   padding: 6px 12px;
   color: white;
+}
+
+.save-btn:hover {
+  background-color: #006fcf;
 }
 
 .save-btn-text {
@@ -198,59 +203,49 @@
   margin: 0;
 }
 
-.select {
-  height: 32px;
+.form-select {
+  
+  justify-content: center;
+  padding: 4.5px 32px 4.5px 12px;
   flex-direction: row;
-}
-
-.select ::ng-deep .mdc-text-field--outlined .mat-mdc-form-field-infix,
-.mdc-text-field--no-label .mat-mdc-form-field-infix {
-  padding-top: 4px;
-}
-
-.select ::ng-deep .mat-mdc-select-value-text {
-  color: rgb(0, 0, 0);
   font-family: Segoe UI;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
-  text-align: left;
+  color: #212529;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid #ced4da;
 }
 
-.mat-slide-toggle ::ng-deep .mdc-switch .mdc-switch__handle-track {
-  width: 17px !important;
+.form-select:hover {
+  border: 1px solid #005baa;
 }
 
-.mat-slide-toggle ::ng-deep .mdc-switch {
-  width: 32px !important;
-  border: 1px solid #dee2e6;
-  border-radius: 32px;
+.form-check {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 8px;
+  cursor: pointer;
 }
 
-.mat-slide-toggle ::ng-deep .mdc-form-field > label {
+.form-check-input {
+  height: 16px;
+  width: 32px;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(0, 0, 0, 0.25)'/%3e%3c/svg%3e");
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.form-check-label {
   font-family: Segoe UI;
   font-size: 16px;
   font-weight: 400;
   line-height: 16.8px;
   text-align: left;
-}
-
-.mat-slide-toggle ::ng-deep .mdc-switch:enabled .mdc-switch__track::before {
-  background-color: white !important;
-}
-
-.mat-slide-toggle ::ng-deep .mdc-switch:enabled .mdc-switch__track::after {
-  background-color: #005baa !important;
-}
-
-.mat-slide-toggle ::ng-deep .mdc-switch .mdc-switch__handle {
-  width: 14px !important;
-  height: 14px !important;
-}
-
-.mat-slide-toggle ::ng-deep .mdc-elevation-overlay {
-  background-color: #dee2e6 !important;
-  border: 1px solid #dee2e6;
+  color: #212529;
 }
 
 .table {
@@ -282,4 +277,8 @@
 .table td {
   border: 1px solid #ddd;
   padding: 8px;
+}
+
+.active-row {
+  background-color: #e5eff7 !important;
 }

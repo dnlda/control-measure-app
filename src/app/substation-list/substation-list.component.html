@@ -48,7 +48,10 @@
                   </select>
             </div>
         </div>
-        <mat-slide-toggle class="mat-slide-toggle" color="primary" hideIcon="true">Схема</mat-slide-toggle>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label">Схема</label>
+          </div>
     </div>
     <table class="table">
         <thead>
@@ -58,10 +61,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let measurement of measurements" (click)="selectMeasurement(measurement.id)"
-                [style.background-color]="idNumber === measurement.id ? '#E5EFF7': 'white'">
-                <td>{{measurement.name}}</td>
-                <td>{{measurement.voltage}}</td>
+            <tr *ngFor="let measurement of measurements" (click)="selectMeasurement(measurement.id)">
+                <td [ngClass]="{'active-row': idNumber === measurement.id}">{{measurement.name}}</td>
+                <td [ngClass]="{'active-row': idNumber === measurement.id}">{{measurement.voltage}}</td>
             </tr>
         </tbody>
     </table>
