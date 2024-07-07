@@ -7,17 +7,39 @@
     <div class="navigation">
       <button class="btn-header" [style.background-color]="activeSection === 'measurements' ? '#ffffff' : 'transparent'"
         [style.color]="activeSection === 'measurements' ? '#000' : '#fff'" (click)="setActiveSection('measurements')">
-        <img src="assets/scale.svg" [style.filter]="activeSection === 'measurements' ? 'invert(20%)' : 'invert(0%)'" />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path [style.fill]="activeSection === 'measurements' ? '#666666' : '#F2F2F2'"
+            d="M23 8C23 9.1 22.1 10 21 10C20.82 10 20.65 9.98 20.49 9.93L16.93 13.48C16.98 13.64 17 13.82 17 14C17 15.1 16.1 16 15 16C13.9 16 13 15.1 13 14C13 13.82 13.02 13.64 13.07 13.48L10.52 10.93C10.36 10.98 10.18 11 10 11C9.82 11 9.64 10.98 9.48 10.93L4.93 15.49C4.98 15.65 5 15.82 5 16C5 17.1 4.1 18 3 18C1.9 18 1 17.1 1 16C1 14.9 1.9 14 3 14C3.18 14 3.35 14.02 3.51 14.07L8.07 9.52C8.02 9.36 8 9.18 8 9C8 7.9 8.9 7 10 7C11.1 7 12 7.9 12 9C12 9.18 11.98 9.36 11.93 9.52L14.48 12.07C14.64 12.02 14.82 12 15 12C15.18 12 15.36 12.02 15.52 12.07L19.07 8.51C19.02 8.35 19 8.18 19 8C19 6.9 19.9 6 21 6C22.1 6 23 6.9 23 8Z"
+            fill="#F2F2F2" />
+        </svg>
         Замеры
       </button>
       <button class="btn-header" [style.background-color]="activeSection === 'reports' ? '#ffffff' : 'transparent'"
         [style.color]="activeSection === 'reports' ? '#000' : '#fff'" (click)="setActiveSection('reports')">
-        <img src="assets/document.svg" [style.filter]="activeSection === 'reports' ? 'invert(20%)' : 'invert(0%)'" />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path [style.fill]="activeSection === 'reports' ? '#666666' : '#F2F2F2'"
+            d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2ZM16 18H8V16H16V18ZM16 14H8V12H16V14ZM13 9V3.5L18.5 9H13Z"
+            fill="#F2F2F2" />
+
+        </svg>
         Отчеты
       </button>
       <button class="btn-header" [style.background-color]="activeSection === 'service' ? '#ffffff' : 'transparent'"
         [style.color]="activeSection === 'service' ? '#000' : '#fff'" (click)="setActiveSection('service')">
-        <img src="assets/case.svg" [style.filter]="activeSection === 'service' ? 'invert(20%)' : 'invert(0%)'" />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_20_1674)">
+            <path [style.fill]="activeSection === 'service' ? '#666666' : '#F2F2F2'"
+              d="M18 16H16V15H8V16H6V15H2V20H22V15H18V16Z" fill="#F2F2F2" />
+            <path [style.fill]="activeSection === 'service' ? '#666666' : '#F2F2F2'"
+              d="M20 8H17V6C17 4.9 16.1 4 15 4H9C7.9 4 7 4.9 7 6V8H4C2.9 8 2 8.9 2 10V14H6V12H8V14H16V12H18V14H22V10C22 8.9 21.1 8 20 8ZM15 8H9V6H15V8Z"
+              fill="#F2F2F2" />
+          </g>
+          <defs>
+            <clipPath id="clip0_20_1674">
+              <rect width="24" height="24" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
         Сервис
       </button>
     </div>

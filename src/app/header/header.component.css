@@ -42,7 +42,11 @@ mat-toolbar {
   justify-content: center;
   border: 1px solid #bdbdbd;
   cursor: pointer;
-  color: #ffffff;
+  font-family: Segoe UI;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 23.94px;
+  text-align: left;
 }
 
 .btn-header:first-child {
@@ -77,6 +81,7 @@ mat-toolbar {
   background-color: #005baa;
   border: 1px solid white;
   padding: 7px 9px;
+  border-radius: 0;
 }
 
 .btn-group:first-child {
